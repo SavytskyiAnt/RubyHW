@@ -1,11 +1,12 @@
+
 class Console
-  COM = %w[play water toilet sleep].freeze
+  COM = %w[play water toilet sleep menu].freeze
 
   def welcome
     cls
-    puts "Hello its game 'Life of dogs and hamster in korea', input name of your pets"
+    puts "Input name of your pets"
+
     name = gets.chomp
-    cls
     puts 'dog or hamster'
     type = ''
     while type == 'dog' || 'hamster'
@@ -21,7 +22,7 @@ class Console
         type = gets.chomp.downcase
       end
     end
-  end
+   end
 
   def who_i_am
     cls
@@ -31,7 +32,7 @@ class Console
   attr_reader :animal
 
   def level_desires
-    cls
+     cls
     @animal.growth
     x = @animal.want_sleep
     y = @animal.want_toilet
@@ -45,7 +46,7 @@ class Console
     print "want_sleep #{' - ' * x}\n"
     print "want_toilet #{' - ' * y}\n"
     print "want_water  #{' - ' * z}\n"
-    print "want_play   #{' - ' * q}\n \n"
+    print "want_play   #{' - ' * q}\n"
     dead
     do_it(@animal)
   end
@@ -64,6 +65,8 @@ class Console
       animal.toilet
     when 'sleep'
       animal.sleep
+    when 'menu'
+      menu
     end
   end
 
@@ -76,9 +79,9 @@ class Console
     end
   end
 
-private
 
-  def cls
+
+  def self.cls
     system 'clear' or system 'cls'
   end
 end
