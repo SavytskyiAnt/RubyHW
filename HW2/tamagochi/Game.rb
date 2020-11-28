@@ -5,17 +5,20 @@ require_relative 'Admin.rb'
 require_relative 'Login.rb'
 require_relative 'Animal'
 require_relative 'Dog'
-require_relative 'Hamster'
+require_relative 'Create_database.rb'
 
 keys = {super_admin:{anton:"1111",vasia:"1234",petya:"5432"},
         admin:{artyr:"2222",nikolay:"3456",hren:"0987"},
         visitor:{natalia:"3333",viktoria:"4567",taras:"8765"}}
 
 animal = Animal.new('heppy')
-
-
 newgame = Console.new
-role = login(keys)
+
+ role = login(keys)
+
+ newSave = Database.new
+ newSave.person = role
+ newSave.save
 
 
 def new_person(role)
